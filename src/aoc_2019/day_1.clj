@@ -2,6 +2,7 @@
   (:require [clojure.java.io :as io]
             [cuerdas.core :as str]))
 
+
 (def input
   (->> (io/resource "day_1_input.txt")
        (slurp)

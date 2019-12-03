@@ -4,6 +4,7 @@
                      partial-fuel-requirement]]
             [clojure.test :refer :all]))
 
+
 (deftest day-1-1
   (testing "calculate partial fuel requirement"
     (is (= (partial-fuel-requirement 12) 2))
