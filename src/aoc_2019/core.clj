@@ -3,6 +3,7 @@
             [aoc-2019.day-2 :as day-2]
             [aoc-2019.day-3 :as day-3]
             [aoc-2019.day-4 :as day-4]
+            [aoc-2019.day-5 :as day-5]
             [clojure.pprint :as pp])
   (:gen-class))
 
@@ -42,12 +43,20 @@
    (day-4/calculate-number-of-valid-passwords-in-range day-4/input
                                                        day-4/valid-password-v2?)))
 
+(defn ^:private day-5-result
+  []
+  (build-result
+   5
+   (day-5/calculate-diagnostic-code-1 day-5/input)
+   (day-5/calculate-diagnostic-code-5 day-5/input)))
+
 (defn ^:private print-result-table
   []
   (let [results (->> (vector (future (day-1-result))
                              (future (day-2-result))
                              (future (day-3-result))
-                             (future (day-4-result)))
+                             (future (day-4-result))
+                             (future (day-5-result)))
                      (mapv deref))]
     (pp/print-table ["Day" "First Star Answer" "Second Star Answer"] results)))
 

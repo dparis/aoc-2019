@@ -9,6 +9,12 @@
    5 91 2 6 91 95 1 95 9 99 2 6 99 103 1 5 103 107 1 6 107 111 1 111 10 115 2
    115 13 119 1 119 6 123 1 123 2 127 1 127 5 0 99 2 14 0 0])
 
+(defn ^:private update-program-with-inputs
+  [program noun verb]
+  (-> (vec program)
+      (assoc 1 noun)
+      (assoc 2 verb)))
+
 (defn ^:private execute-opcode-1
   [program arg-1 arg-2 arg-3]
   (let [operand-1 (nth program arg-1)
@@ -20,12 +26,6 @@
   (let [operand-1 (nth program arg-1)
         operand-2 (nth program arg-2)]
     (assoc program arg-3 (* operand-1 operand-2))))
-
-(defn update-program-with-inputs
-  [program noun verb]
-  (-> (vec program)
-      (assoc 1 noun)
-      (assoc 2 verb)))
 
 (defn execute-program
   ([program noun verb]
